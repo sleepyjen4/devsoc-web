@@ -11,7 +11,7 @@ document.addEventListener("keydown", function () {
 });
 
 function jump() {
-    let position = 25;
+    let position = 40;
     isJumping = true;
 
     const upInterval = setInterval(() => {
@@ -19,14 +19,15 @@ function jump() {
           clearInterval(upInterval);
     
           const downInterval = setInterval(() => {
+            position -= 5;
+            horse.style.bottom = position + "px";
+
             if (position < GROUND_HEIGHT) {
               position = GROUND_HEIGHT;
               horse.style.bottom = position + "px";
               clearInterval(downInterval);
               isJumping = false;
             }
-            position -= 5;
-            horse.style.bottom = position + "px";
           }, 20);
         }
     
