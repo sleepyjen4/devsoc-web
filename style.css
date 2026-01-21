@@ -1,22 +1,40 @@
-.body {
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+  }
+  
+  #game {
+    width: 600px;
+    height: 300px;
+    border: 2px solid black;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(to top, lightblue, rgb(255, 221, 157));
+  }
+
+  #floor {
+    width: 600px;
+    height: 40px;
+    background-color: grey;
+    position: absolute;
+    bottom: 0px;
+  }
+  
+  #horse {
+    width: 40px;
+    height: 40px;
     background-color: black;
-}
-
-div {
-    color: white;
-}
-
-.container {
-    display: flex;  /* This makes items sit side-by-side */
-    height: 100vh;  /* 100vh = 100% of viewport height (full screen) */
-}
-
-.left-side {
-    flex: 1;  /* This means "take up 1 part of available space" */
-    background-color: lightblue;
-}
-
-.right-side {
-    flex: 1;  /* Also takes 1 part, so they're equal (50/50 split) */
-    background-color: darkblue;
-}
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+  }
+  
+  #barrel {
+    width: 20px;
+    height: 40px;
+    background-color: brown;
+    position: absolute;
+    bottom: 40px;
+    left: 580px;
+  }
