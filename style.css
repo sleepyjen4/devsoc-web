@@ -1,0 +1,22 @@
+.body {
+    background-color: black;
+}
+
+div {
+    color: white;
+}
+
+.container {
+    display: flex;  /* This makes items sit side-by-side */
+    height: 100vh;  /* 100vh = 100% of viewport height (full screen) */
+}
+
+.left-side {
+    flex: 1;  /* This means "take up 1 part of available space" */
+    background-color: lightblue;
+}
+
+.right-side {
+    flex: 1;  /* Also takes 1 part, so they're equal (50/50 split) */
+    background-color: darkblue;
+}
