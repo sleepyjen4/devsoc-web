@@ -1,18 +1,24 @@
 const horse = document.getElementById("horse");
 const barrel = document.getElementById("barrel");
 
+// Jumping Mechanics
 const GROUND_HEIGHT = 40;
 let isJumping = false;
 
+// Day/Night Toggle
 let isDay = true;
 
+// Score Counter
+let score = 0;
+let scoreInterval;
+
+// HORSE JUMP MOVEMENT
 document.addEventListener("keydown", function () {
     if (!isJumping) {
         jump();
     }
 });
 
-// HORSE JUMP MOVEMENT
 function jump() {
     let position = 40;
     isJumping = true;
@@ -85,4 +91,13 @@ setInterval(() => {
     }
     isDay = !isDay;
 }, 20000); 
-  
+
+// SCORE COUNTER
+function startScore() {
+    scoreInterval = setInterval(() => {
+        score++;
+        document.getElementById("score").textContent = "Score: " + score;
+    }, 1000);
+}
+
+startScore(); 
