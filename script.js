@@ -96,7 +96,7 @@ setInterval(() => {
 function startScore() {
     scoreInterval = setInterval(() => {
         score++;
-        document.getElementById("score").textContent = "Score: " + score;
+        document.getElementById("score").textContent = "Year: " + score;
     }, 1000);
 }
 

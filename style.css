@@ -1,17 +1,38 @@
 body {
     display: flex;
     justify-content: center;
-    margin-top: 150px;
-  }
-  
+    margin-top: 200px;
+    color: antiquewhite;
+}
+
+h1 {
+    position: absolute;
+    top: 15px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: rgb(213, 23, 23);
+    text-shadow: 2px 2px black;
+}
+
+p {
+    position: absolute;
+    top: 70px;
+    width: 225px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: goldenrod;
+    text-shadow: 1px px #000000;
+}
+
 #game {
     width: 600px;
     height: 300px;
-    border: 2px solid black;
+    border: 2px solid rgb(209, 154, 15);
     position: relative;
     overflow: hidden;
     background-color: #97d0fc;
     transition: background-color 2s linear;
+    box-shadow: 0px 0px 7px goldenrod;
 }
 
 #floor {
@@ -44,10 +65,10 @@ body {
 
 #score {
     position: absolute;
-    top: 100px;
+    top: 164px;
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 25px;
+    font-size: 19px;
 
-    color: #111;
+    color: black;
     z-index: 10;
 }
