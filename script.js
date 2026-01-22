@@ -1,5 +1,6 @@
 const horse = document.getElementById("horse");
 const barrel = document.getElementById("barrel");
+const floor = document.getElementById("floor");
 
 // Jumping Mechanics
 const GROUND_HEIGHT = 40;
@@ -53,7 +54,6 @@ function moveBarrel() {
         if (barrelPosition < -20) {
             barrelPosition = 580;
     }
-
     barrelPosition -= 5;
     barrel.style.left = barrelPosition + "px";
     }, 20);
@@ -62,7 +62,6 @@ function moveBarrel() {
 moveBarrel();
 
 // COLLISION DETECTION
-
 setInterval(() => {
     const horseBottom = parseInt(
         window.getComputedStyle(horse).getPropertyValue("bottom")
@@ -85,9 +84,11 @@ setInterval(() => {
     if (isDay) {
         // Night
         game.style.backgroundColor = "#1b4a73";
+        game.style.filter = "brightness(0.6)";
     } else {
         // Day
         game.style.backgroundColor = "#97d0fc";
+        game.style.filter = "brightness(1)";
     }
     isDay = !isDay;
 }, 20000); 
