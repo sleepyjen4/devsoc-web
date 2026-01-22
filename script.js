@@ -4,12 +4,15 @@ const barrel = document.getElementById("barrel");
 const GROUND_HEIGHT = 40;
 let isJumping = false;
 
+let isDay = true;
+
 document.addEventListener("keydown", function () {
     if (!isJumping) {
         jump();
     }
 });
 
+// HORSE JUMP MOVEMENT
 function jump() {
     let position = 40;
     isJumping = true;
@@ -36,20 +39,23 @@ function jump() {
       }, 20);
 }
 
+// BARREL MOVEMENT
 function moveBarrel() {
-  let barrelPosition = 580;
+    let barrelPosition = 580;
 
-  setInterval(() => {
-    if (barrelPosition < -20) {
-        barrelPosition = 580;
+    setInterval(() => {
+        if (barrelPosition < -20) {
+            barrelPosition = 580;
     }
 
     barrelPosition -= 5;
     barrel.style.left = barrelPosition + "px";
-  }, 20);
+    }, 20);
 }
 
 moveBarrel();
+
+// COLLISION DETECTION
 
 setInterval(() => {
     const horseBottom = parseInt(
@@ -64,7 +70,19 @@ setInterval(() => {
         barrelLeft > 50 &&
         horseBottom <= GROUND_HEIGHT + 10
     ) {
-      location.reload();
+        location.reload();
     }
   }, 10);
+
+// DAY AND NIGHT TOGGLE
+setInterval(() => {
+    if (isDay) {
+        // Night
+        game.style.backgroundColor = "#1b4a73";
+    } else {
+        // Day
+        game.style.backgroundColor = "#97d0fc";
+    }
+    isDay = !isDay;
+}, 20000); 
   

@@ -4,24 +4,25 @@ body {
     margin-top: 75px;
   }
   
-  #game {
+#game {
     width: 600px;
     height: 300px;
     border: 2px solid black;
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(to top, lightblue, rgb(255, 221, 157));
-  }
+    background-color: #97d0fc;
+    transition: background-color 2s linear;
+}
 
-  #floor {
+#floor {
     width: 600px;
     height: 40px;
-    background-color: grey;
+    background-color: brown;
     position: absolute;
     bottom: 0px;
-  }
-  
-  #horse {
+}
+
+#horse {
     width: 100px;
     height: 72px;
     position: absolute;
@@ -30,13 +31,13 @@ body {
     background-image: url("horse.png");
     background-size: cover;
     background-repeat: no-repeat;
-  }
-  
-  #barrel {
+}
+
+#barrel {
     width: 20px;
     height: 40px;
     background-color: brown;
     position: absolute;
     bottom: 40px;
     left: 580px;
-  }
+}
