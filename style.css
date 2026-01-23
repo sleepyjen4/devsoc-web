@@ -32,8 +32,11 @@ p {
     overflow: hidden;
     box-shadow: 0px 0px 7px goldenrod;
 
-    background-color: #97d0fc;
-    transition: background-color 2s linear;
+    
+    background-image: url("images/sky.jpg");
+    background-size: cover;
+    image-rendering: pixelated;
+    transition: filter 2s linear;
 }
 
 #floor {
@@ -42,8 +45,6 @@ p {
     background-color: brown;
     position: absolute;
     bottom: 0px;
-    background-image: url("images/roof.jpg");
-    background-size: 100px 100px;
 
     filter: brightness(1);
     transition: filter 2s linear;
@@ -57,11 +58,10 @@ p {
     left: 50px;
     background-image: url("images/horse.png");
     background-size: cover;
-    background-repeat: no-repeat;
     image-rendering: pixelated;
 }
 
-#barrel {
+#lantern {
     width: 20px;
     height: 40px;
     background-color: brown;
