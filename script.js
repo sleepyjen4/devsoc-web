@@ -23,22 +23,24 @@ document.addEventListener("keydown", function () {
 function jump() {
     let position = 40;
     isJumping = true;
+    horse.style.backgroundImage = "url('images/horse2.png')";
 
     const upInterval = setInterval(() => {
         if (position >= GROUND_HEIGHT + 80) {
-          clearInterval(upInterval);
-    
-          const downInterval = setInterval(() => {
-            position -= 5;
-            horse.style.bottom = position + "px";
+            clearInterval(upInterval);
+        
+            const downInterval = setInterval(() => {
+                position -= 5;
+                horse.style.bottom = position + "px";
 
-            if (position < GROUND_HEIGHT) {
-              position = GROUND_HEIGHT;
-              horse.style.bottom = position + "px";
-              clearInterval(downInterval);
-              isJumping = false;
-            }
-          }, 20);
+                if (position < GROUND_HEIGHT) {
+                    position = GROUND_HEIGHT;
+                    horse.style.bottom = position + "px";
+                    clearInterval(downInterval);
+                    isJumping = false;
+                    horse.style.backgroundImage = "url('images/horse.png')";
+                }
+            }, 20);
         }
     
         position += 5;
