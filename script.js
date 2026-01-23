@@ -91,7 +91,7 @@ setInterval(() => {
         game.style.filter = "brightness(1)";
     }
     isDay = !isDay;
-}, 15000); 
+}, 20000); 
 
 // SCORE COUNTER
 function startScore() {
