@@ -134,7 +134,7 @@ function spawnLantern() {
   }, 20);
 
   // random spawn time
-  const randomDelay = Math.random() * spawnRate + 600;
+  const randomDelay = Math.random() * spawnRate + 760;
   setTimeout(spawnLantern, randomDelay);
 }
 
@@ -154,7 +154,7 @@ setInterval(() => {
         lanternLeft > 50 &&
         horseBottom <= GROUND_HEIGHT + 10
       ) {
-        // location.reload();
+        location.reload();
       }
     });
   }, 10);
