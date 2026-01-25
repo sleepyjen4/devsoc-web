@@ -13,6 +13,14 @@ let isDay = true;
 // Score Counter
 let score = 0;
 let scoreInterval;
+let bonusMultiplier = 1;
+
+// Game 
+let gameFinished = false;
+
+// Lanterns
+let gameSpeed = 5;
+let spawnRate = 1500; 
 
 // HORSE JUMP MOVEMENT
 document.addEventListener("keydown", function () {
@@ -59,7 +67,7 @@ function spawnLantern() {
   lantern.style.left = lanternPosition + "px";
 
   const moveInterval = setInterval(() => {
-    lanternPosition -= 5;
+    lanternPosition -= gameSpeed;
     lantern.style.left = lanternPosition + "px";
 
     // remove when off-screen
@@ -70,7 +78,7 @@ function spawnLantern() {
   }, 20);
 
   // random spawn time
-  const randomDelay = Math.random() * 1500 + 500;
+  const randomDelay = Math.random() * spawnRate + 600;
   setTimeout(spawnLantern, randomDelay);
 }
 
@@ -103,18 +111,26 @@ setInterval(() => {
         // Night
         game.style.filter = "brightness(0.5)"; 
         sun.style.backgroundColor = "white";
+
+        gameSpeed = 6;
+        spawnRate = 1250;
+        bonusMultiplier = 5;
     } else {
         // Day
         game.style.filter = "brightness(1)";
         sun.style.backgroundColor = "#fcffb5";
+
+        gameSpeed = 5;
+        spawnRate = 1500;
+        bonusMultiplier = 1;
     }
     isDay = !isDay;
-}, 20000); 
+}, 10000); 
 
 // SCORE COUNTER
 function startScore() {
     scoreInterval = setInterval(() => {
-        score++;
+        score += 1 * bonusMultiplier;
         document.getElementById("score").textContent = "Year: " + score;
     }, 1000);
 }
