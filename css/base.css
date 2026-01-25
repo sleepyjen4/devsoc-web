@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    color: antiquewhite;
+}
+
+h1 {
+    position: absolute;
+    top: 15px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: rgb(213, 23, 23);
+    text-shadow: 2px 2px black;
+}
+
+#subtitle {
+    position: absolute;
+    top: 70px;
+    width: 235px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: goldenrod;
+    text-shadow: 1px px #000000;
+}
