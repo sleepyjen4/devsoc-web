@@ -24,6 +24,43 @@ p {
     text-shadow: 1px px #000000;
 }
 
+#sun {
+    position: absolute;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    background-color:#fcffb5;
+
+    border-radius: 50%;
+    box-shadow: 0 0 12px white;
+    animation: sunMove 20s linear infinite;
+}
+
+@keyframes sunMove {
+    0% {
+        left: 0px;
+        top: 150px;
+    }
+    25% {
+        left: 140px;
+        top: 40px;
+    }
+    50% {
+        left: 280px;
+        top: 19px;
+    }
+    75% {
+        left: 420px;
+        top: 40px;
+    }
+    100% {
+        left: 600px;
+        top: 150px;
+    }
+}
+
 #game {
     width: 600px;
     height: 300px;
@@ -60,7 +97,7 @@ p {
     background-position: center top;
     background-size: 110% auto; 
     image-rendering: pixelated;
-}
+}  
 
 #horse {
     width: 100px;

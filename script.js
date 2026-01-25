@@ -1,6 +1,7 @@
 const horse = document.getElementById("horse");
 const lantern = document.getElementById("lantern");
 const floor = document.getElementById("floor");
+const sun = document.getElementById("sun");
 
 // Jumping Mechanics
 const GROUND_HEIGHT = 40;
@@ -85,10 +86,12 @@ setInterval(() => {
 setInterval(() => {
     if (isDay) {
         // Night
-        game.style.filter = "brightness(0.6)";
+        game.style.filter = "brightness(0.5)"; 
+        sun.style.backgroundColor = "white";
     } else {
         // Day
         game.style.filter = "brightness(1)";
+        sun.style.backgroundColor = "#fcffb5";
     }
     isDay = !isDay;
 }, 20000); 
