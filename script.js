@@ -2,6 +2,8 @@ const horse = document.getElementById("horse");
 const lantern = document.getElementById("lantern");
 const floor = document.getElementById("floor");
 const sun = document.getElementById("sun");
+const intro = document.getElementById("intro");
+const startBtn = document.getElementById("startBtn");
 
 // Jumping Mechanics
 const GROUND_HEIGHT = 40;
@@ -11,20 +13,74 @@ let isJumping = false;
 let isDay = true;
 
 // Score Counter
-let score = 0;
 let scoreInterval;
+let score = 1;
 let bonusMultiplier = 1;
 
 // Game 
+let dayNightInterval;
+let gameStarted = false;
 let gameFinished = false;
 
 // Lanterns
 let gameSpeed = 5;
 let spawnRate = 1500; 
 
+// INTRO
+startBtn.addEventListener("click", () => {
+    intro.style.opacity = "0";
+  
+    setTimeout(() => {
+        intro.style.display = "none";
+        gameStarted = true;
+        startGame();
+    }, 800);
+});
+
+function startGame() {
+    gameStarted = true;
+    sun.classList.add("sun-moving");
+
+    startDayNightCycle();
+    spawnLantern();
+    startScore(); 
+}  
+
+// SCORE COUNTER
+function startScore() {
+    scoreInterval = setInterval(() => {
+        score += 1 * bonusMultiplier;
+        document.getElementById("score").textContent = "Year: " + score;
+    }, 1000);
+}
+
+// DAY AND NIGHT TOGGLE
+function startDayNightCycle() {
+    dayNightInterval = setInterval(() => {
+        if (isDay) {
+            // Night
+            game.style.filter = "brightness(0.5)"; 
+            sun.style.backgroundColor = "white";
+    
+            gameSpeed = 6;
+            spawnRate = 1250;
+            bonusMultiplier = 5;
+        } else {
+            // Day
+            game.style.filter = "brightness(1)";
+            sun.style.backgroundColor = "#fcffb5";
+    
+            gameSpeed = 5;
+            spawnRate = 1500;
+            bonusMultiplier = 1;
+        }
+        isDay = !isDay;
+    }, 20000); 
+}
+
 // HORSE JUMP MOVEMENT
 document.addEventListener("keydown", function () {
-    if (!isJumping) {
+    if (!isJumping && gameStarted) {
         jump();
     }
 });
@@ -82,8 +138,6 @@ function spawnLantern() {
   setTimeout(spawnLantern, randomDelay);
 }
 
-spawnLantern();
-
 // COLLISION DETECTION
 setInterval(() => {
     const horseBottom = parseInt(
@@ -105,34 +159,3 @@ setInterval(() => {
     });
   }, 10);
   
-// DAY AND NIGHT TOGGLE
-setInterval(() => {
-    if (isDay) {
-        // Night
-        game.style.filter = "brightness(0.5)"; 
-        sun.style.backgroundColor = "white";
-
-        gameSpeed = 6;
-        spawnRate = 1250;
-        bonusMultiplier = 5;
-    } else {
-        // Day
-        game.style.filter = "brightness(1)";
-        sun.style.backgroundColor = "#fcffb5";
-
-        gameSpeed = 5;
-        spawnRate = 1500;
-        bonusMultiplier = 1;
-    }
-    isDay = !isDay;
-}, 10000); 
-
-// SCORE COUNTER
-function startScore() {
-    scoreInterval = setInterval(() => {
-        score += 1 * bonusMultiplier;
-        document.getElementById("score").textContent = "Year: " + score;
-    }, 1000);
-}
-
-startScore(); 
