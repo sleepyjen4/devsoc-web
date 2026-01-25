@@ -16,7 +16,7 @@ h1 {
 p {
     position: absolute;
     top: 70px;
-    width: 225px;
+    width: 235px;
     text-align: center;
     font-size: 16px;
     font-family: "Pixelify Sans", sans-serif;
@@ -82,6 +82,7 @@ p {
     left: 0;
     width: 100%;
     height: 40px;
+    background-color: rgb(238, 238, 214);
 }
 
 #rooftop {
@@ -110,12 +111,12 @@ p {
     image-rendering: pixelated;
 }
  
-#lantern {
+.lantern {
     width: 20px;
     height: 40px;
     position: absolute;
     bottom: 40px;
-    left: 580px;
+    left: 600px;
     background-image: url("images/lantern2.png");
     background-size: cover;
     image-rendering: pixelated;

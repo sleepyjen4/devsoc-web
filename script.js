@@ -49,39 +49,54 @@ function jump() {
       }, 20);
 }
 
-// LANTERN MOVEMENT
-function movelantern() {
-    let lanternPosition = 580;
+// LANTERN SPAWNING
+function spawnLantern() {
+  const lantern = document.createElement("div");
+  lantern.classList.add("lantern");
+  game.appendChild(lantern);
 
-    setInterval(() => {
-        if (lanternPosition < -20) {
-            lanternPosition = 580;
-    }
+  let lanternPosition = 580;
+  lantern.style.left = lanternPosition + "px";
+
+  const moveInterval = setInterval(() => {
     lanternPosition -= 5;
     lantern.style.left = lanternPosition + "px";
-    }, 20);
+
+    // remove when off-screen
+    if (lanternPosition < -20) {
+      clearInterval(moveInterval);
+      lantern.remove();
+    }
+  }, 20);
+
+  // random spawn time
+  const randomDelay = Math.random() * 1500 + 500;
+  setTimeout(spawnLantern, randomDelay);
 }
 
-movelantern();
+spawnLantern();
 
 // COLLISION DETECTION
 setInterval(() => {
     const horseBottom = parseInt(
-        window.getComputedStyle(horse).getPropertyValue("bottom")
-    );
-    const lanternLeft = parseInt(
-        window.getComputedStyle(lantern).getPropertyValue("left")
+      window.getComputedStyle(horse).getPropertyValue("bottom")
     );
   
-    if (
+    document.querySelectorAll(".lantern").forEach((lantern) => {
+      const lanternLeft = parseInt(
+        window.getComputedStyle(lantern).getPropertyValue("left")
+      );
+  
+      if (
         lanternLeft < 110 &&
         lanternLeft > 50 &&
         horseBottom <= GROUND_HEIGHT + 10
-        ) {
-        location.reload();
-    }
+      ) {
+        // location.reload();
+      }
+    });
   }, 10);
-
+  
 // DAY AND NIGHT TOGGLE
 setInterval(() => {
     if (isDay) {
