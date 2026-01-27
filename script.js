@@ -61,7 +61,7 @@ function startDayNightCycle() {
             // Night
             game.classList.add("night"); 
             sun.style.backgroundColor = "white";
-    
+          
             gameSpeed = 6;
             spawnRate = 1250;
             bonusMultiplier = 5;
@@ -118,6 +118,8 @@ function spawnLantern() {
   const lantern = document.createElement("div");
   lantern.classList.add("lantern");
 
+  if (!isDay) { lantern.classList.add("glow");}
+
   game.appendChild(lantern);
 
   let lanternPosition = 580;
@@ -155,7 +157,7 @@ setInterval(() => {
         lanternLeft > 50 &&
         horseBottom <= GROUND_HEIGHT + 10
       ) {
-        location.reload();
+        // location.reload();
       }
     });
   }, 10);
