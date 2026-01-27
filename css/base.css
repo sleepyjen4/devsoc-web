@@ -1,63 +1,63 @@
 body {
-    display: flex;
-    justify-content: center;
-    margin-top: 200px;
-    background-color: rgb(255, 250, 234);
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+  background-color: rgb(255, 250, 234);
 }
 
 h1 {
-    position: absolute;
-    top: 15px;
-    font-family: "Pixelify Sans", sans-serif;
-    color: rgb(213, 23, 23);
-    text-shadow: 2px 2px black;
+  position: absolute;
+  top: 15px;
+  font-family: "Pixelify Sans", sans-serif;
+  color: rgb(213, 23, 23);
+  text-shadow: 2px 2px black;
 }
 
 #subtitle {
-    position: absolute;
-    top: 70px;
-    width: 235px;
-    text-align: center;
-    font-size: 16px;
-    font-family: "Pixelify Sans", sans-serif;
-    color: goldenrod;
-    text-shadow: 1px px #000000;
+  position: absolute;
+  top: 70px;
+  width: 235px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif;
+  color: goldenrod;
+  text-shadow: 1px px #000000;
 }
 
 #intro {
-    position: fixed;
-    inset: 0;
-    background: rgba(20, 20, 20, 0.98);
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
-    font-family: "Pixelify Sans", sans-serif;
-    color: rgb(255, 211, 99);
-  
-    z-index: 100;
-    transition: opacity 0.8s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.98);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Pixelify Sans", sans-serif;
+  color: rgb(255, 211, 99);
+
+  z-index: 100;
+  transition: opacity 0.8s ease;
 }
-  
+
 #intro h2 {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 #intro p {
-    color: white; 
+  color: white;
 }
-  
+
 #startBtn {
-    font-family: "Pixelify Sans", sans-serif;
-    font-size: 16px;
-  
-    padding: 10px 20px;
-    cursor: pointer;
-  
-    background: rgb(213, 23, 23);
-    color: white;
-    border: none;
-    box-shadow: 2px 2px black;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 16px;
+
+  padding: 10px 20px;
+  cursor: pointer;
+
+  background: rgb(213, 23, 23);
+  color: white;
+  border: none;
+  box-shadow: 2px 2px black;
 }
