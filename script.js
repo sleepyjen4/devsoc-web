@@ -17,100 +17,102 @@ let scoreInterval;
 let score = 1;
 let bonusMultiplier = 1;
 
-// Game 
+// Game
 let dayNightInterval;
+let rooftopInterval;
+let rooftopX = 0;
 let gameStarted = false;
 let gameFinished = false;
 
 // Lanterns
 let gameSpeed = 5;
-let spawnRate = 1500; 
+let spawnRate = 1500;
 
 // INTRO
 startBtn.addEventListener("click", () => {
-    intro.style.opacity = "0";
-  
-    setTimeout(() => {
-        intro.style.display = "none";
-        gameStarted = true;
-        startGame();
-    }, 800);
+  intro.style.opacity = "0";
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    gameStarted = true;
+    startGame();
+  }, 800);
 });
 
 function startGame() {
-    gameStarted = true;
-    sun.classList.add("sun-moving");
+  gameStarted = true;
+  sun.classList.add("sun-moving");
 
-    startDayNightCycle();
-    spawnLantern();
-    startScore(); 
-}  
+  startDayNightCycle();
+  spawnLantern();
+  startScore();
+}
 
 // SCORE COUNTER
 function startScore() {
-    scoreInterval = setInterval(() => {
-        score += 1 * bonusMultiplier;
-        document.getElementById("score").textContent = "Year: " + score;
-    }, 1000);
+  scoreInterval = setInterval(() => {
+    score += 1 * bonusMultiplier;
+    document.getElementById("score").textContent = "Year: " + score;
+  }, 1000);
 }
 
 // DAY AND NIGHT TOGGLE
 function startDayNightCycle() {
-    dayNightInterval = setInterval(() => {
-        if (isDay) {
-            // Night
-            game.classList.add("night"); 
-            sun.style.backgroundColor = "white";
-          
-            gameSpeed = 6;
-            spawnRate = 1250;
-            bonusMultiplier = 5;
-        } else {
-            // Day
-            game.classList.remove("night"); 
-            sun.style.backgroundColor = "#fcffb5";
-    
-            gameSpeed = 5;
-            spawnRate = 1500;
-            bonusMultiplier = 1;
-        }
-        isDay = !isDay;
-    }, 20000); 
+  dayNightInterval = setInterval(() => {
+    if (isDay) {
+      // Night
+      game.classList.add("night");
+      sun.style.backgroundColor = "white";
+
+      gameSpeed = 6;
+      spawnRate = 1250;
+      bonusMultiplier = 5;
+    } else {
+      // Day
+      game.classList.remove("night");
+      sun.style.backgroundColor = "#fcffb5";
+
+      gameSpeed = 5;
+      spawnRate = 1500;
+      bonusMultiplier = 1;
+    }
+    isDay = !isDay;
+  }, 20000);
 }
 
 // HORSE JUMP MOVEMENT
 document.addEventListener("keydown", function () {
-    if (!isJumping && gameStarted) {
-        jump();
-    }
+  if (!isJumping && gameStarted) {
+    jump();
+  }
 });
 
 function jump() {
-    let position = 40;
-    isJumping = true;
-    horse.style.backgroundImage = "url('images/horse2.png')";
+  let position = 40;
+  isJumping = true;
+  horse.style.backgroundImage = "url('images/horse2.png')";
 
-    const upInterval = setInterval(() => {
-        if (position >= GROUND_HEIGHT + 80) {
-            clearInterval(upInterval);
-        
-            const downInterval = setInterval(() => {
-                position -= 5;
-                horse.style.bottom = position + "px";
+  const upInterval = setInterval(() => {
+    if (position >= GROUND_HEIGHT + 80) {
+      clearInterval(upInterval);
 
-                if (position < GROUND_HEIGHT) {
-                    position = GROUND_HEIGHT;
-                    horse.style.bottom = position + "px";
-                    clearInterval(downInterval);
-                    isJumping = false;
-                    horse.style.backgroundImage = "url('images/horse.png')";
-                }
-            }, 20);
-        }
-    
-        position += 5;
+      const downInterval = setInterval(() => {
+        position -= 5;
         horse.style.bottom = position + "px";
+
+        if (position < GROUND_HEIGHT) {
+          position = GROUND_HEIGHT;
+          horse.style.bottom = position + "px";
+          clearInterval(downInterval);
+          isJumping = false;
+          horse.style.backgroundImage = "url('images/horse.png')";
+        }
       }, 20);
+    }
+
+    position += 5;
+    horse.style.bottom = position + "px";
+  }, 20);
 }
 
 // LANTERN SPAWNING
@@ -118,7 +120,9 @@ function spawnLantern() {
   const lantern = document.createElement("div");
   lantern.classList.add("lantern");
 
-  if (!isDay) { lantern.classList.add("glow");}
+  if (!isDay) {
+    lantern.classList.add("glow");
+  }
 
   game.appendChild(lantern);
 
@@ -143,22 +147,29 @@ function spawnLantern() {
 
 // COLLISION DETECTION
 setInterval(() => {
-    const horseBottom = parseInt(
-      window.getComputedStyle(horse).getPropertyValue("bottom")
+  const horseBottom = parseInt(
+    window.getComputedStyle(horse).getPropertyValue("bottom")
+  );
+
+  document.querySelectorAll(".lantern").forEach((lantern) => {
+    const lanternLeft = parseInt(
+      window.getComputedStyle(lantern).getPropertyValue("left")
     );
-  
-    document.querySelectorAll(".lantern").forEach((lantern) => {
-      const lanternLeft = parseInt(
-        window.getComputedStyle(lantern).getPropertyValue("left")
-      );
-  
-      if (
-        lanternLeft < 110 &&
-        lanternLeft > 50 &&
-        horseBottom <= GROUND_HEIGHT + 10
-      ) {
-        // location.reload();
-      }
-    });
-  }, 10);
-  
+
+    if (
+      lanternLeft < 110 &&
+      lanternLeft > 50 &&
+      horseBottom <= GROUND_HEIGHT + 10
+    ) {
+      // location.reload();
+    }
+  });
+}, 10);
+
+// ROOFTOP MOVEMENT
+function moveRooftop() {
+  rooftopX -= gameSpeed;
+  rooftop.style.backgroundPositionX = rooftopX + "px";
+}
+
+setInterval(moveRooftop, 20);
