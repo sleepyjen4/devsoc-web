@@ -72,6 +72,8 @@ function startDayNightCycle() {
       game.classList.add("night");
       sun.style.backgroundColor = "white";
 
+      horse.classList.add("glow");
+
       gameSpeed = 6;
       spawnRate = 1250;
       bonusMultiplier = 5;
@@ -79,6 +81,8 @@ function startDayNightCycle() {
       // Day
       game.classList.remove("night");
       sun.style.backgroundColor = "#fcffb5";
+
+      horse.classList.remove("glow");
 
       gameSpeed = 5;
       spawnRate = 1500;
@@ -169,7 +173,7 @@ setInterval(() => {
       lanternLeft > 50 &&
       horseBottom <= GROUND_HEIGHT + 10
     ) {
-      // location.reload();
+      location.reload();
     }
   });
 }, 10);
