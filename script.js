@@ -1,5 +1,5 @@
 const horse = document.getElementById("horse");
-const lantern = document.getElementById("lantern");
+const lantern = document.querySelector(".lantern");
 const floor = document.getElementById("floor");
 const sun = document.getElementById("sun");
 const intro = document.getElementById("intro");
@@ -59,7 +59,7 @@ function startDayNightCycle() {
     dayNightInterval = setInterval(() => {
         if (isDay) {
             // Night
-            game.style.filter = "brightness(0.5)"; 
+            game.classList.add("night"); 
             sun.style.backgroundColor = "white";
     
             gameSpeed = 6;
@@ -67,7 +67,7 @@ function startDayNightCycle() {
             bonusMultiplier = 5;
         } else {
             // Day
-            game.style.filter = "brightness(1)";
+            game.classList.remove("night"); 
             sun.style.backgroundColor = "#fcffb5";
     
             gameSpeed = 5;
@@ -117,6 +117,7 @@ function jump() {
 function spawnLantern() {
   const lantern = document.createElement("div");
   lantern.classList.add("lantern");
+
   game.appendChild(lantern);
 
   let lanternPosition = 580;

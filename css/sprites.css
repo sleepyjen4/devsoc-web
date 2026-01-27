@@ -2,9 +2,9 @@
     position: absolute;
     left: 0px;
     top: 150px;
-
     width: 48px;
     height: 48px;
+    z-index: 6;
 
     border-radius: 50%;
     background-color:#fcffb5;
@@ -44,6 +44,8 @@
     position: absolute;
     bottom: 40px;
     left: 50px;
+    z-index: 6;
+    
     background-image: url("/devsoc-web/images/horse.png");
     background-size: cover;
     image-rendering: pixelated;
@@ -55,6 +57,8 @@
     position: absolute;
     bottom: 40px;
     left: 600px;
+    z-index: 6;
+
     background-image: url("/devsoc-web/images/lantern2.png");
     background-size: cover;
     image-rendering: pixelated;
