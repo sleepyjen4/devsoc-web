@@ -4,6 +4,7 @@ const floor = document.getElementById("floor");
 const sun = document.getElementById("sun");
 const intro = document.getElementById("intro");
 const startBtn = document.getElementById("startBtn");
+const rooftop = document.getElementById("rooftop");
 
 // Jumping Mechanics
 const GROUND_HEIGHT = 40;
@@ -45,6 +46,14 @@ function startGame() {
   startDayNightCycle();
   spawnLantern();
   startScore();
+
+  rooftopInterval = setInterval(moveRooftop, 20);
+}
+
+// ROOFTOP MOVEMENT
+function moveRooftop() {
+  rooftopX -= gameSpeed;
+  rooftop.style.backgroundPositionX = rooftopX + "px";
 }
 
 // SCORE COUNTER
@@ -164,11 +173,3 @@ setInterval(() => {
     }
   });
 }, 10);
-
-// ROOFTOP MOVEMENT
-function moveRooftop() {
-  rooftopX -= gameSpeed;
-  rooftop.style.backgroundPositionX = rooftopX + "px";
-}
-
-setInterval(moveRooftop, 20);
