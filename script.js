@@ -19,7 +19,6 @@ let bonusMultiplier = 1;
 
 // Game
 let dayNightInterval;
-let rooftopInterval;
 let rooftopX = 0;
 let gameStarted = false;
 let gameFinished = false;
