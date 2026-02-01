@@ -7,6 +7,7 @@ const intro = document.getElementById("intro");
 const startBtn = document.getElementById("startBtn");
 const rooftop = document.getElementById("rooftop");
 const scoreDisplay = document.getElementById("score");
+const gameOverDisplay = document.getElementById("gameOver");
 
 // Game Constants
 const GROUND_HEIGHT = 40;
@@ -44,7 +45,7 @@ let gameSpeed = GAME_SPEED;
 let spawnRate = SPAWN_RATE;
 let lastLanternSpawn = 0;
 let nextLanternDelay = 0;
-let lanternsList = [];
+let lanternList = [];
 
 // Animation Frame
 let animationFrameId = null;
@@ -95,6 +96,7 @@ function gameLoop(currentTime) {
   updateDayNight(currentTime);
   updateJump();
   updateLanterns();
+  checkCollisions();
 
   animationFrameId = requestAnimationFrame(gameLoop);
 }
@@ -216,13 +218,13 @@ function updateLanterns() {
     nextLanternDelay = Math.random() * spawnRate + 760;
   }
 
-  lanternsList.forEach((lantern, index) => {
+  lanternList.forEach((lantern, index) => {
     lantern.x -= gameSpeed;
     lantern.element.style.left = lantern.x + "px";
 
     if (lantern.x < -20) {
       lantern.element.remove();
-      lanternsList.splice(index, 1);
+      lanternList.splice(index, 1);
     }
   });
 }
@@ -243,26 +245,21 @@ function spawnLantern() {
   };
 
   lantern.style.left = lanternObject.x + "px";
-  lanternsList.push(lanternObject);
+  lanternList.push(lanternObject);
 }
 
-// // COLLISION DETECTION
-// setInterval(() => {
-//   const horseBottom = parseInt(
-//     window.getComputedStyle(horse).getPropertyValue("bottom"),
-//   );
+// =====================
+// COLLISION DETECTION
+// =====================
 
-//   document.querySelectorAll(".lantern").forEach((lantern) => {
-//     const lanternLeft = parseInt(
-//       window.getComputedStyle(lantern).getPropertyValue("left"),
-//     );
+function checkCollisions() {
+  const horseBottom = jumpPosition;
 
-//     if (
-//       lanternLeft < 110 &&
-//       lanternLeft > 50 &&
-//       horseBottom <= GROUND_HEIGHT + 10
-//     ) {
-//       location.reload();
-//     }
-//   });
-// }, 10);
+  lanternList.forEach((lantern) => {
+    if (lantern.x < 110 && lantern.x > 50) {
+      if (horseBottom <= GROUND_HEIGHT + 10) {
+        location.reload();
+      }
+    }
+  });
+}
