@@ -32,6 +32,7 @@ let rooftopX = 0;
 // Jumping Mechanics
 let jumpPosition = GROUND_HEIGHT;
 let jumpSpeed = 0;
+let jumpState = "on-ground"; // "on-ground", "rising", "falling"
 
 // Score Counter
 let lastScoreUpdate = 0;
@@ -87,6 +88,7 @@ function gameLoop(currentTime) {
   moveRooftop();
   updateScore(currentTime);
   updateDayNight(currentTime);
+  updateJump();
 
   animationFrameId = requestAnimationFrame(gameLoop);
 }
@@ -148,40 +150,52 @@ function toggleDayNight() {
   }
 }
 
-// // HORSE JUMP MOVEMENT
-// document.addEventListener("keydown", function () {
-//   if (!isJumping && gameStarted) {
-//     jump();
-//   }
-// });
+// =====================
+// HORSE JUMP MOVEMENT
+// =====================
 
-// function jump() {
-//   let position = 40;
-//   isJumping = true;
-//   horse.style.backgroundImage = "url('images/horse2.png')";
+document.addEventListener("keydown", function () {
+  if (!isJumping && gameStarted) {
+    jump();
+  }
+});
 
-//   const upInterval = setInterval(() => {
-//     if (position >= GROUND_HEIGHT + 80) {
-//       clearInterval(upInterval);
+function jump() {
+  if (jumpState === "on-ground") {
+    isJumping = true;
+    jumpState = "rising";
+    jumpSpeed = JUMP_SPEED;
+    horse.style.backgroundImage = "url('images/horse2.png')";
+  }
+}
 
-//       const downInterval = setInterval(() => {
-//         position -= 5;
-//         horse.style.bottom = position + "px";
+function updateJump() {
+  if (jumpState === "grounded") {
+    return;
+  }
 
-//         if (position < GROUND_HEIGHT) {
-//           position = GROUND_HEIGHT;
-//           horse.style.bottom = position + "px";
-//           clearInterval(downInterval);
-//           isJumping = false;
-//           horse.style.backgroundImage = "url('images/horse.png')";
-//         }
-//       }, 20);
-//     }
+  if (jumpState === "rising") {
+    jumpPosition += jumpSpeed;
+    horse.style.bottom = jumpPosition + "px";
 
-//     position += 5;
-//     horse.style.bottom = position + "px";
-//   }, 20);
-// }
+    if (jumpPosition >= GROUND_HEIGHT + JUMP_HEIGHT) {
+      jumpPosition = GROUND_HEIGHT + JUMP_HEIGHT;
+      jumpState = "falling";
+      jumpSpeed = JUMP_SPEED;
+    }
+  } else if (jumpState === "falling") {
+    jumpPosition -= jumpSpeed;
+    horse.style.bottom = jumpPosition + "px";
+
+    // Landed on the ground again
+    if (jumpPosition <= GROUND_HEIGHT) {
+      jumpPosition = GROUND_HEIGHT;
+      jumpState = "on-ground";
+      isJumping = false;
+      horse.style.backgroundImage = "url('images/horse.png')";
+    }
+  }
+}
 
 // // LANTERN SPAWNING
 // function spawnLantern() {
