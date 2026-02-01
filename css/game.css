@@ -12,6 +12,25 @@
   transition: filter 2s linear;
 }
 
+#gameOver {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#gameOver.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
 #darkOverlay {
   position: absolute;
   inset: 0;

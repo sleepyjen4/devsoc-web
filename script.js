@@ -258,8 +258,19 @@ function checkCollisions() {
   lanternList.forEach((lantern) => {
     if (lantern.x < 110 && lantern.x > 50) {
       if (horseBottom <= GROUND_HEIGHT + 10) {
-        location.reload();
+        gameOver();
       }
     }
   });
+}
+
+// ======================
+// GAME OVER
+// ======================
+
+function gameOver() {
+  if (!gameStarted) return;
+
+  gameStarted = false;
+  gameOverDisplay.classList.add("show");
 }
