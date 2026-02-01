@@ -6,6 +6,7 @@ const sun = document.getElementById("sun");
 const intro = document.getElementById("intro");
 const startBtn = document.getElementById("startBtn");
 const rooftop = document.getElementById("rooftop");
+const scoreDisplay = document.getElementById("score");
 
 // Game Constants
 const GROUND_HEIGHT = 40;
@@ -47,6 +48,7 @@ let animationFrameId = null;
 // =================
 // INTRO
 // =================
+
 startBtn.addEventListener("click", () => {
   intro.style.opacity = "0";
 
@@ -56,6 +58,10 @@ startBtn.addEventListener("click", () => {
     startGame();
   }, 800);
 });
+
+// =================
+// GAME LOOP
+// =================
 
 function startGame() {
   gameStarted = true;
@@ -79,23 +85,32 @@ function gameLoop(currentTime) {
   }
 
   moveRooftop();
+  updateScore(currentTime);
 
   animationFrameId = requestAnimationFrame(gameLoop);
 }
 
+// =================
 // ROOFTOP MOVEMENT
+// =================
+
 function moveRooftop() {
   rooftopX -= gameSpeed;
   rooftop.style.backgroundPositionX = rooftopX + "px";
 }
 
+// =================
 // SCORE COUNTER
-// function startScore() {
-//   scoreInterval = setInterval(() => {
-//     score += 1 * bonusMultiplier;
-//     document.getElementById("score").textContent = "Year: " + score;
-//   }, 1000);
-// }
+// =================
+
+function updateScore(currentTime) {
+  // Note-to-self: Check if the current time has passed by 1 second
+  if (currentTime - lastScoreUpdate >= 1000) {
+    score += 1 * bonusMultiplier;
+    scoreDisplay.textContent = "Year: " + score;
+    lastScoreUpdate = currentTime;
+  }
+}
 
 // // DAY AND NIGHT TOGGLE
 // function startDayNightCycle() {
