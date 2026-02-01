@@ -8,6 +8,7 @@ const startBtn = document.getElementById("startBtn");
 const rooftop = document.getElementById("rooftop");
 const scoreDisplay = document.getElementById("score");
 const gameOverDisplay = document.getElementById("gameOver");
+const finalScoreDisplay = document.getElementById("final-score");
 
 // Game Constants
 const GROUND_HEIGHT = 40;
@@ -272,5 +273,8 @@ function gameOver() {
   if (!gameStarted) return;
 
   gameStarted = false;
+
+  finalScoreDisplay.textContent = "Your Horse Reached Year " + score;
+
   gameOverDisplay.classList.add("show");
 }

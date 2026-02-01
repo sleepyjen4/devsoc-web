@@ -31,6 +31,22 @@
   pointer-events: all;
 }
 
+#gameOver > h1 {
+  font-size: 4rem;
+  color: #fcffb5;
+  margin-top: 60px;
+  text-shadow: 0 0 10px rgba(252, 255, 181, 0.6);
+  animation: fadeIn 0.8s ease-out 0.3s;
+}
+
+#final-score {
+  font-size: 1.5rem;
+  color: #fcffb5;
+  margin-top: 30px;
+  text-shadow: 0 0 10px rgba(252, 255, 181, 0.6);
+  animation: fadeIn 0.8s ease-out 0.3s;
+}
+
 #darkOverlay {
   position: absolute;
   inset: 0;
