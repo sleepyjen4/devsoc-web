@@ -42,6 +42,9 @@ let bonusMultiplier = 1;
 // Lanterns
 let gameSpeed = GAME_SPEED;
 let spawnRate = SPAWN_RATE;
+let lastLanternSpawn = 0;
+let nextLanternDelay = 0;
+let lanternsList = [];
 
 // Animation Frame
 let animationFrameId = null;
@@ -73,6 +76,8 @@ function startGame() {
   lastLanternSpawn = startTime;
   lastScoreUpdate = startTime;
 
+  nextLanternDelay = Math.random() * spawnRate + 760;
+
   gameLoop(startTime);
 }
 
@@ -89,6 +94,7 @@ function gameLoop(currentTime) {
   updateScore(currentTime);
   updateDayNight(currentTime);
   updateJump();
+  updateLanterns();
 
   animationFrameId = requestAnimationFrame(gameLoop);
 }
@@ -197,35 +203,48 @@ function updateJump() {
   }
 }
 
-// // LANTERN SPAWNING
-// function spawnLantern() {
-//   const lantern = document.createElement("div");
-//   lantern.classList.add("lantern");
+// =====================
+// LANTERN SPAWNING
+// =====================
 
-//   if (!isDay) {
-//     lantern.classList.add("glow");
-//   }
+function updateLanterns() {
+  const currentTime = performance.now();
 
-//   game.appendChild(lantern);
+  if (currentTime - lastLanternSpawn >= nextLanternDelay) {
+    spawnLantern();
+    lastLanternSpawn = currentTime;
+    nextLanternDelay = Math.random() * spawnRate + 760;
+  }
 
-//   let lanternPosition = 580;
-//   lantern.style.left = lanternPosition + "px";
+  lanternsList.forEach((lantern, index) => {
+    lantern.x -= gameSpeed;
+    lantern.element.style.left = lantern.x + "px";
 
-//   const moveInterval = setInterval(() => {
-//     lanternPosition -= gameSpeed;
-//     lantern.style.left = lanternPosition + "px";
+    if (lantern.x < -20) {
+      lantern.element.remove();
+      lanternsList.splice(index, 1);
+    }
+  });
+}
 
-//     // remove when off-screen
-//     if (lanternPosition < -20) {
-//       clearInterval(moveInterval);
-//       lantern.remove();
-//     }
-//   }, 20);
+function spawnLantern() {
+  const lantern = document.createElement("div");
+  lantern.classList.add("lantern");
 
-//   // random spawn time
-//   const randomDelay = Math.random() * spawnRate + 760;
-//   setTimeout(spawnLantern, randomDelay);
-// }
+  if (!isDay) {
+    lantern.classList.add("glow");
+  }
+
+  game.appendChild(lantern);
+
+  const lanternObject = {
+    element: lantern,
+    x: 580,
+  };
+
+  lantern.style.left = lanternObject.x + "px";
+  lanternsList.push(lanternObject);
+}
 
 // // COLLISION DETECTION
 // setInterval(() => {
