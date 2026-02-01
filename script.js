@@ -12,9 +12,9 @@ const gameOverDisplay = document.getElementById("gameOver");
 // Game Constants
 const GROUND_HEIGHT = 40;
 const JUMP_HEIGHT = 80;
-const JUMP_SPEED = 5;
+const JUMP_SPEED = 4;
 const DURATION_OF_DAY = 20000;
-const GAME_SPEED = 5;
+const GAME_SPEED = 4;
 const NIGHT_GAME_SPEED = 6;
 const SPAWN_RATE = 1500;
 const NIGHT_SPAWN_RATE = 1250;
