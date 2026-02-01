@@ -45,9 +45,9 @@ let spawnRate = SPAWN_RATE;
 // Animation Frame
 let animationFrameId = null;
 
-// =================
+// =====================
 // INTRO
-// =================
+// =====================
 
 startBtn.addEventListener("click", () => {
   intro.style.opacity = "0";
@@ -59,9 +59,9 @@ startBtn.addEventListener("click", () => {
   }, 800);
 });
 
-// =================
+// =====================
 // GAME LOOP
-// =================
+// =====================
 
 function startGame() {
   gameStarted = true;
@@ -86,22 +86,23 @@ function gameLoop(currentTime) {
 
   moveRooftop();
   updateScore(currentTime);
+  updateDayNight(currentTime);
 
   animationFrameId = requestAnimationFrame(gameLoop);
 }
 
-// =================
+// =====================
 // ROOFTOP MOVEMENT
-// =================
+// =====================
 
 function moveRooftop() {
   rooftopX -= gameSpeed;
   rooftop.style.backgroundPositionX = rooftopX + "px";
 }
 
-// =================
+// =====================
 // SCORE COUNTER
-// =================
+// =====================
 
 function updateScore(currentTime) {
   // Note-to-self: Check if the current time has passed by 1 second
@@ -112,33 +113,40 @@ function updateScore(currentTime) {
   }
 }
 
-// // DAY AND NIGHT TOGGLE
-// function startDayNightCycle() {
-//   dayNightInterval = setInterval(() => {
-//     if (isDay) {
-//       // Night
-//       game.classList.add("night");
-//       sun.style.backgroundColor = "white";
+// =====================
+// DAY AND NIGHT TOGGLE
+// =====================
 
-//       horse.classList.add("glow");
+function updateDayNight(currentTime) {
+  if (currentTime - lastDayNightToggle >= DURATION_OF_DAY) {
+    toggleDayNight();
+    lastDayNightToggle = currentTime;
+  }
+}
 
-//       gameSpeed = 6;
-//       spawnRate = 1250;
-//       bonusMultiplier = 5;
-//     } else {
-//       // Day
-//       game.classList.remove("night");
-//       sun.style.backgroundColor = "#fcffb5";
+function toggleDayNight() {
+  isDay = !isDay;
 
-//       horse.classList.remove("glow");
+  if (!isDay) {
+    // Change to Night
+    game.classList.add("night");
+    sun.style.backgroundColor = "white";
+    horse.classList.add("glow");
 
-//       gameSpeed = 5;
-//       spawnRate = 1500;
-//       bonusMultiplier = 1;
-//     }
-//     isDay = !isDay;
-//   }, 20000);
-// }
+    gameSpeed = NIGHT_GAME_SPEED;
+    spawnRate = NIGHT_SPAWN_RATE;
+    bonusMultiplier = 5;
+  } else {
+    // Change to Day
+    game.classList.remove("night");
+    sun.style.backgroundColor = "#fcffb5";
+    horse.classList.remove("glow");
+
+    gameSpeed = GAME_SPEED;
+    spawnRate = SPAWN_RATE;
+    bonusMultiplier = 1;
+  }
+}
 
 // // HORSE JUMP MOVEMENT
 // document.addEventListener("keydown", function () {
