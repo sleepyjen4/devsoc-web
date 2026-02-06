@@ -61,10 +61,24 @@ h1 {
 }
 
 .name-input-container label {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #fcffb5;
   text-shadow: 0 0 10px rgba(252, 255, 181, 0.3);
   letter-spacing: 0.05em;
+}
+
+#horseName {
+  padding: 5px 20px;
+  font-size: 1rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(252, 255, 181, 0.3);
+  border-radius: 10px;
+  text-align: center;
+  width: 170px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
 #startBtn {
