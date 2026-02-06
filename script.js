@@ -9,6 +9,7 @@ const rooftop = document.getElementById("rooftop");
 const scoreDisplay = document.getElementById("score");
 const gameOverDisplay = document.getElementById("gameOver");
 const finalScoreDisplay = document.getElementById("final-score");
+const restartBtn = document.getElementById("restartBtn");
 
 // Game Constants
 const GROUND_HEIGHT = 40;
@@ -274,7 +275,43 @@ function gameOver() {
 
   gameStarted = false;
 
-  finalScoreDisplay.textContent = "Your Horse Reached Year " + score;
+  finalScoreDisplay.textContent = "Your Horse Reached Year " + score + ".";
 
   gameOverDisplay.classList.add("show");
+}
+
+function restartGame() {
+  gameOverDisplay.classList.remove("show");
+  isDay = true;
+  isJumping = false;
+
+  lastDayNightToggle = 0;
+
+  rooftopX = 0;
+
+  jumpPosition = GROUND_HEIGHT;
+  jumpSpeed = 0;
+  jumpState = "on-ground";
+
+  lastScoreUpdate = 0;
+  score = 1;
+  bonusMultiplier = 1;
+
+  gameSpeed = GAME_SPEED;
+  spawnRate = SPAWN_RATE;
+  lastLanternSpawn = 0;
+  nextLanternDelay = 0;
+  lanternList = [];
+
+  animationFrameId = null;
+
+  lanternList.forEach((lantern) => lantern.remove());
+
+  game.classList.remove("night");
+  sun.style.backgroundColor = "#fcffb5";
+  horse.classList.remove("glow");
+  horse.style.backgroundImage = "url('images/horse.png')";
+  scoreDisplay.textContent = "Year: " + score;
+
+  startGame();
 }
