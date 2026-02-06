@@ -12,10 +12,28 @@
   transition: filter 2s linear;
 }
 
+.finishingGlow {
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 8px goldenrod;
+  }
+  50% {
+    box-shadow:
+      0 0 15px goldenrod,
+      0 0 30px rgba(218, 165, 32, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 8px goldenrod;
+  }
+}
+
 #gameOver {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(90, 79, 43, 0.75);
   z-index: 80;
   display: flex;
   flex-direction: column;
@@ -32,7 +50,7 @@
 }
 
 #gameOver > h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   color: #fcffb5;
   margin-top: 60px;
   text-shadow: 0 0 10px rgba(252, 255, 181, 0.6);

@@ -147,7 +147,7 @@ function toggleDayNight() {
 
     gameSpeed = NIGHT_GAME_SPEED;
     spawnRate = NIGHT_SPAWN_RATE;
-    bonusMultiplier = 5;
+    bonusMultiplier = 10;
   } else {
     // Change to Day
     game.classList.remove("night");
@@ -275,12 +275,17 @@ function gameOver() {
 
   gameStarted = false;
 
+  if (score >= 2026) {
+    document.getElementById("gameOverText").textContent =
+      "Good Fortune Awaits!";
+    game.classList.add("finishingGlow");
+  }
+
   let horseName =
     document.getElementById("horseName").value.trim() || "Your Horse";
 
-  finalScoreDisplay.textContent = horseName + " Reached Year " + score + ".";
+  finalScoreDisplay.textContent =
+    horseName + " Reached The Year " + score + ".";
 
   gameOverDisplay.classList.add("show");
-
-  sun.classList.remove("sun-moving");
 }
