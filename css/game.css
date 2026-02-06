@@ -47,6 +47,22 @@
   animation: fadeIn 0.8s ease-out 0.3s;
 }
 
+#restartBtn {
+  position: absolute;
+  top: 200px;
+  margin-top: 10px;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  background: rgb(213, 23, 23);
+  color: white;
+  border: none;
+  box-shadow: 2px 2px black;
+}
+
 #darkOverlay {
   position: absolute;
   inset: 0;
