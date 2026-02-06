@@ -6,9 +6,9 @@ body {
 }
 
 h1 {
-  font-size: 46px;
+  font-size: 56px;
   position: absolute;
-  top: 15px;
+  top: 3px;
   font-family: "Pixelify Sans", sans-serif;
   color: rgb(213, 23, 23);
   text-shadow: 2px 2px black;
@@ -16,7 +16,7 @@ h1 {
 
 #subtitle {
   position: absolute;
-  top: 95px;
+  top: 98px;
   width: 500px;
   text-align: center;
   font-size: 16px;
