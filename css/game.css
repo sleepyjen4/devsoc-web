@@ -47,7 +47,7 @@
   animation: fadeIn 0.8s ease-out 0.3s;
 }
 
-#restartBtn {
+/* #restartBtn {
   position: absolute;
   top: 200px;
   margin-top: 10px;
@@ -61,7 +61,7 @@
   color: white;
   border: none;
   box-shadow: 2px 2px black;
-}
+} */
 
 #darkOverlay {
   position: absolute;

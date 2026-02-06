@@ -275,43 +275,12 @@ function gameOver() {
 
   gameStarted = false;
 
-  finalScoreDisplay.textContent = "Your Horse Reached Year " + score + ".";
+  let horseName =
+    document.getElementById("horseName").value.trim() || "Your Horse";
+
+  finalScoreDisplay.textContent = horseName + " Reached Year " + score + ".";
 
   gameOverDisplay.classList.add("show");
-}
 
-function restartGame() {
-  gameOverDisplay.classList.remove("show");
-  isDay = true;
-  isJumping = false;
-
-  lastDayNightToggle = 0;
-
-  rooftopX = 0;
-
-  jumpPosition = GROUND_HEIGHT;
-  jumpSpeed = 0;
-  jumpState = "on-ground";
-
-  lastScoreUpdate = 0;
-  score = 1;
-  bonusMultiplier = 1;
-
-  gameSpeed = GAME_SPEED;
-  spawnRate = SPAWN_RATE;
-  lastLanternSpawn = 0;
-  nextLanternDelay = 0;
-  lanternList = [];
-
-  animationFrameId = null;
-
-  lanternList.forEach((lantern) => lantern.remove());
-
-  game.classList.remove("night");
-  sun.style.backgroundColor = "#fcffb5";
-  horse.classList.remove("glow");
-  horse.style.backgroundImage = "url('images/horse.png')";
-  scoreDisplay.textContent = "Year: " + score;
-
-  startGame();
+  sun.classList.remove("sun-moving");
 }
