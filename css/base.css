@@ -36,6 +36,7 @@ h1 {
 
   font-family: "Pixelify Sans", sans-serif;
   color: rgb(255, 211, 99);
+  letter-spacing: 0.05em;
 
   z-index: 100;
   transition: opacity 0.8s ease;
@@ -47,6 +48,23 @@ h1 {
 
 #intro p {
   color: white;
+}
+
+.name-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 20px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.name-input-container label {
+  font-size: 1.1rem;
+  color: #fcffb5;
+  text-shadow: 0 0 10px rgba(252, 255, 181, 0.3);
+  letter-spacing: 0.05em;
 }
 
 #startBtn {
