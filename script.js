@@ -284,8 +284,7 @@ function gameOver() {
   let horseName =
     document.getElementById("horseName").value.trim() || "Your Horse";
 
-  finalScoreDisplay.textContent =
-    horseName + " Reached The Year " + score + ".";
+  finalScoreDisplay.textContent = horseName + " Reached Year " + score + ".";
 
   gameOverDisplay.classList.add("show");
 }
