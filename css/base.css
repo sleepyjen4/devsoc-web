@@ -1,24 +1,33 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 200px;
   background-color: rgb(255, 250, 234);
 }
 
 h1 {
-  font-size: 56px;
+  width: 600px;
+  height: 65px;
+  aspect-ratio: 120/13;
   position: absolute;
   top: 3px;
+
+  font-size: 54.5px;
   font-family: "Pixelify Sans", sans-serif;
-  color: rgb(213, 23, 23);
-  text-shadow: 2px 2px black;
+  color: #8d2c2c;
+  text-shadow: 0 0 3px rgba(218, 165, 32, 0.88);
 }
 
 #subtitle {
+  width: 478px;
+  height: 23px;
+  aspect-ratio: 478/23;
   position: absolute;
   top: 98px;
-  width: 500px;
   text-align: center;
+
   font-size: 16px;
   font-family: "Pixelify Sans", sans-serif;
   color: goldenrod;
