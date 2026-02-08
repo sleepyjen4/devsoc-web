@@ -1,4 +1,6 @@
 #game {
+  top: 80px;
+
   width: 600px;
   height: 300px;
   border: 2px solid rgb(209, 154, 15);
@@ -111,10 +113,12 @@
 
 #score {
   position: absolute;
-  top: 164px;
-  font-family: "Pixelify Sans", sans-serif;
-  font-size: 19px;
-
-  color: #8d2c2c;
+  top: 240px;
   z-index: 10;
+
+  font-family: "Pixelify Sans", sans-serif;
+  color: #8d2c2c;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
 }
