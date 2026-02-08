@@ -1,0 +1,38 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  font-family: "Pixelify Sans", sans-serif;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  border-top: 4px solid #daa520;
+  background: #8d2c2c;
+  text-align: center;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-nav a {
+  width: 183px;
+  text-decoration: none;
+  color: #daa520;
+  font-weight: 500;
+  font-size: 1.5rem;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-nav a:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+.footer-text {
+  padding-top: 10px;
+  font-size: 0.8rem;
+  color: #e3ca8a;
+}
