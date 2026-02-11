@@ -9,11 +9,16 @@ const rooftop = document.getElementById("rooftop");
 const scoreDisplay = document.getElementById("score");
 const gameOverDisplay = document.getElementById("gameOver");
 const finalScoreDisplay = document.getElementById("final-score");
-const restartBtn = document.getElementById("restartBtn");
 
 // Sounds
 const jumpSound = new Audio("sounds/jump.mp3");
+jumpSound.volume = 0.1;
 const scoreSound = new Audio("sounds/score_ding.mp3");
+const startBtnSound = new Audio("sounds/start_button_click.mp3");
+startBtnSound.volume = 0.6;
+const gameOverSound = new Audio("sounds/game_over.mp3");
+const chineseSound = new Audio("sounds/funny_chinese_win_sound.mp3");
+chineseSound.volume = 0.5;
 
 // Game Constants
 const GROUND_HEIGHT = 40;
@@ -43,8 +48,9 @@ let jumpState = "on-ground"; // "on-ground", "rising", "falling"
 
 // Score Counter
 let lastScoreUpdate = 0;
-let score = 1;
+let score = 2022;
 let bonusMultiplier = 1;
+let difficulty = 0;
 
 // Lanterns
 let gameSpeed = GAME_SPEED;
@@ -61,6 +67,7 @@ let animationFrameId = null;
 // =====================
 
 startBtn.addEventListener("click", () => {
+  startBtnSound.play();
   intro.style.opacity = "0";
 
   setTimeout(() => {
@@ -133,6 +140,7 @@ function updateScore(currentTime) {
 
       scoreSound.currentTime = 0;
       scoreSound.play();
+      difficulty += 0.05;
     }
 
     lastScoreUpdate = currentTime;
@@ -159,16 +167,16 @@ function toggleDayNight() {
     sun.style.backgroundColor = "white";
     horse.classList.add("glow");
 
-    gameSpeed = NIGHT_GAME_SPEED;
+    gameSpeed = NIGHT_GAME_SPEED + difficulty;
     spawnRate = NIGHT_SPAWN_RATE;
-    bonusMultiplier = 10;
+    bonusMultiplier = 20;
   } else {
     // Change to Day
     game.classList.remove("night");
     sun.style.backgroundColor = "#fcffb5";
     horse.classList.remove("glow");
 
-    gameSpeed = GAME_SPEED;
+    gameSpeed = GAME_SPEED + difficulty;
     spawnRate = SPAWN_RATE;
     bonusMultiplier = 1;
   }
@@ -190,7 +198,6 @@ function jump() {
     jumpState = "rising";
     jumpSpeed = JUMP_SPEED;
     horse.style.backgroundImage = "url('images/horse2.png')";
-    jumpSound.volume = 0.2;
     jumpSound.play();
   }
 }
@@ -295,6 +302,9 @@ function gameOver() {
     document.getElementById("gameOverText").textContent =
       "Good Fortune Awaits!";
     game.classList.add("finishingGlow");
+    chineseSound.play();
+  } else {
+    gameOverSound.play();
   }
 
   let horseName =
