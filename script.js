@@ -11,6 +11,10 @@ const gameOverDisplay = document.getElementById("gameOver");
 const finalScoreDisplay = document.getElementById("final-score");
 const restartBtn = document.getElementById("restartBtn");
 
+// Sounds
+const jumpSound = new Audio("sounds/jump.mp3");
+const scoreSound = new Audio("sounds/score_ding.mp3");
+
 // Game Constants
 const GROUND_HEIGHT = 40;
 const JUMP_HEIGHT = 80;
@@ -121,6 +125,16 @@ function updateScore(currentTime) {
   if (currentTime - lastScoreUpdate >= 1000) {
     score += 1 * bonusMultiplier;
     scoreDisplay.textContent = "Year: " + score;
+
+    if (score > 0 && score % 100 === 0) {
+      scoreDisplay.classList.remove("celebrate");
+      void scoreDisplay.offsetWidth;
+      scoreDisplay.classList.add("celebrate");
+
+      scoreSound.currentTime = 0;
+      scoreSound.play();
+    }
+
     lastScoreUpdate = currentTime;
   }
 }
@@ -176,6 +190,8 @@ function jump() {
     jumpState = "rising";
     jumpSpeed = JUMP_SPEED;
     horse.style.backgroundImage = "url('images/horse2.png')";
+    jumpSound.volume = 0.2;
+    jumpSound.play();
   }
 }
 
