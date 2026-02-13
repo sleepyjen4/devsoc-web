@@ -75,6 +75,13 @@ section {
   min-width: 250px;
 }
 
+.junimo-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
 .junimo {
   width: 125px;
   height: 125px;
@@ -156,7 +163,7 @@ section {
 
 /* Hobbies Section */
 .hobbies .tagline {
-  color: #262626;
+  color: #fff;
 }
 
 .hobbies .container {
@@ -218,7 +225,7 @@ section {
 }
 
 .hobbies p {
-  color: #2c2c2c;
+  color: #f1f1f1;
   font-family: "Pixelify Sans";
   font-size: 18px;
   font-weight: 400;
@@ -227,12 +234,14 @@ section {
 
 .game-block,
 .album-wrapper,
-img {
+img,
+.hero-title {
   transition: transform 0.2s ease;
 }
 
 .album-wrapper:hover,
-img:hover {
+img:hover,
+.hero-title:hover {
   animation: bounce 0.4s ease;
 }
 
