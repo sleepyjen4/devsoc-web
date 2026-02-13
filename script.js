@@ -197,7 +197,7 @@ function jump() {
     isJumping = true;
     jumpState = "rising";
     jumpSpeed = JUMP_SPEED;
-    horse.style.backgroundImage = "url('images/horse2.png')";
+    horse.style.backgroundImage = "url('/devsoc-web/images/game/horse2.png')";
     jumpSound.play();
   }
 }
@@ -225,7 +225,7 @@ function updateJump() {
       jumpPosition = GROUND_HEIGHT;
       jumpState = "on-ground";
       isJumping = false;
-      horse.style.backgroundImage = "url('images/horse.png')";
+      horse.style.backgroundImage = "url('/devsoc-web/images/game/horse.png')";
     }
   }
 }

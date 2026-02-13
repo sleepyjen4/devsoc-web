@@ -8,7 +8,7 @@
   overflow: hidden;
   box-shadow: 0px 0px 7px goldenrod;
 
-  background-image: url("/devsoc-web/images/sky.jpg");
+  background-image: url("/devsoc-web/images/game/sky.jpg");
   background-size: cover;
   image-rendering: pixelated;
   transition: filter 2s linear;
@@ -104,7 +104,7 @@
   height: 40px;
   z-index: 6;
 
-  background-image: url("/devsoc-web/images/rooftop2.png");
+  background-image: url("/devsoc-web/images/game/rooftop2.png");
   background-repeat: repeat-x;
   background-position: 0 0;
   background-size: 100% auto;

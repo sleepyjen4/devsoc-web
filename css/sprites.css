@@ -46,7 +46,7 @@
   left: 50px;
   z-index: 6;
 
-  background-image: url("/devsoc-web/images/horse.png");
+  background-image: url("/devsoc-web/images/game/horse.png");
   background-size: cover;
   image-rendering: pixelated;
 
@@ -67,7 +67,7 @@
   left: 600px;
   z-index: 6;
 
-  background-image: url("/devsoc-web/images/lantern2.png");
+  background-image: url("/devsoc-web/images/game/lantern2.png");
   background-size: cover;
   image-rendering: pixelated;
 
