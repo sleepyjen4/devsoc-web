@@ -25,3 +25,4 @@ This project uses multiple CSS files for better organisation:
 - **game.css** – game layout, score sytem, and background
 - **sprites.css** – characters and obstacles (sun/moon, horse, lanterns)
 - **ui.css** – menu layout and buttons
+- **aboutme.css** – css styling for the "About Me" page. 
