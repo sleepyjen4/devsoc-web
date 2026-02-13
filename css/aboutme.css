@@ -32,8 +32,8 @@ section {
   width: 100%;
   display: flex;
   padding: 20px 64px;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   background: url("/devsoc-web/images/about-me/Header.png");
   background-size: cover;
