@@ -12,12 +12,12 @@ const finalScoreDisplay = document.getElementById("final-score");
 
 // Sounds
 const jumpSound = new Audio("sounds/jump.mp3");
-jumpSound.volume = 0.25;
+jumpSound.volume = 0.1;
 const scoreSound = new Audio("sounds/checkpoint.mp3");
 const startBtnSound = new Audio("sounds/start_button_click.mp3");
 const gameOverSound = new Audio("sounds/game_over.mp3");
 const chineseSound = new Audio("sounds/funny_chinese_win_sound.mp3");
-chineseSound.volume = 0.4;
+chineseSound.volume = 0.2;
 
 // Game Constants
 const GROUND_HEIGHT = 40;
@@ -47,7 +47,7 @@ let jumpState = "on-ground"; // "on-ground", "rising", "falling"
 
 // Score Counter
 let lastScoreUpdate = 0;
-let score = 1;
+let score = 2027;
 let bonusMultiplier = 1;
 let difficulty = 0;
 

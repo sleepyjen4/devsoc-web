@@ -135,6 +135,27 @@
         </div>
       </div>
     </section>
+    <audio
+      id="popSound"
+      src="/devsoc-web/sounds/pop.mp3"
+      preload="auto"
+    ></audio>
+    <script>
+      const popSound = document.getElementById("popSound");
+
+      function playPop() {
+        popSound.currentTime = 0;
+        popSound.play();
+      }
+
+      const heroTitle = document.querySelector(".hero-title");
+      heroTitle.addEventListener("mouseenter", playPop);
+
+      const images = document.querySelectorAll("img");
+      images.forEach((img) => {
+        img.addEventListener("mouseenter", playPop);
+      });
+    </script>
   </body>
   <footer class="footer">
     <nav class="footer-nav">
