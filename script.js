@@ -12,13 +12,12 @@ const finalScoreDisplay = document.getElementById("final-score");
 
 // Sounds
 const jumpSound = new Audio("sounds/jump.mp3");
-jumpSound.volume = 0.1;
-const scoreSound = new Audio("sounds/score_ding.mp3");
+jumpSound.volume = 0.25;
+const scoreSound = new Audio("sounds/checkpoint.mp3");
 const startBtnSound = new Audio("sounds/start_button_click.mp3");
-startBtnSound.volume = 0.6;
 const gameOverSound = new Audio("sounds/game_over.mp3");
 const chineseSound = new Audio("sounds/funny_chinese_win_sound.mp3");
-chineseSound.volume = 0.5;
+chineseSound.volume = 0.4;
 
 // Game Constants
 const GROUND_HEIGHT = 40;
