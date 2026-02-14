@@ -47,7 +47,7 @@ let jumpState = "on-ground"; // "on-ground", "rising", "falling"
 
 // Score Counter
 let lastScoreUpdate = 0;
-let score = 2027;
+let score = 1;
 let bonusMultiplier = 1;
 let difficulty = 0;
 
