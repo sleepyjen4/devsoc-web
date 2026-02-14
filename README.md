@@ -5,7 +5,7 @@ The Year of the Horse
 ⚠️ Best experienced on desktop. ⚠️
 This game isn’t optimised for mobile yet (responsive design is still a work in progress!), and gameplay relies on keyboard controls.
 
-Run as a horse through shifting skies of day and night, leaping over sacred lanterns along the way. As darkness falls, the pace quickens — you’ll need sharp reflexes and quick adaptation to keep going. Reach 2026 to claim good fortune and blessings for the year ahead.
+Run as a horse through the day or night, jumping over sacred lanterns. As darkness falls, speed increases, so you have to adapt fast! Reach 2026 to claim good fortune and blessings for the year ahead.
 
 Note: _This game is still under development_. As this is my first time creating a web-based game like this, it may still contain bugs... thank you for your patience and understanding! Feedback or help would be most appreciated!
 
